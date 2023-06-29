@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style type="text/css">
+        h1{
+            font-size: 100px;
+            text-align: center;
+            font-family: verdana;
+            transition: 0.5s;
+        }
+    </style>
+    <title>My CLock</title>
+</head>
+<body onload="showTime()">
+    <h1 onmouseenter="modify()" onmouseleave="normal()">Clock</h1>
+    <h1></h1>
+</body>
+<script type="text/javascript">
+    function showTime()
+    {
+        var obj= new Date();
+        var h= obj.getHours();
+        var m= obj.getMinutes();
+        var s= obj.getSeconds();
+        var para= "AM";
+        if(h>=12)
+        {
+            para= "PM";
+        }
+        if(h>12)
+        {
+            h=h-12;
+        }
+        if(h<10)
+        {
+            h='0'+h;
+        }
+        if(m<10)
+        {
+            m='0'+m;
+        }
+        if(s<10)
+        {
+            s='0'+s;
+        }
+        var time= h + " : " + m + " : " + s + " " + para;
+        document.getElementsByTagName("h1")[1].innerText= time;
+        setInterval(showTime,1000);
+    }
+    function modify()
+    {
+        document.getElementsByTagName("h1")[0].style.fontSize= "80px";
+        document.getElementsByTagName("h1")[0].style.fontFamily= "fantasy";
+    }
+    function normal()
+    {
+        document.getElementsByTagName("h1")[0].style.fontSize= "100px";
+        document.getElementsByTagName("h1")[0].style.fontFamily= "verdana";
+    }
+</script>
+</html>

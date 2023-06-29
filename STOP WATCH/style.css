@@ -1,0 +1,35 @@
+*{
+    background-color: rgb(3, 3, 44);
+}
+.divclass
+{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    gap: 10px;
+}
+#b1,#b2,#b3
+{
+    height: 60px;
+    width: 120px;
+    font-size: 24px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    background-color: orange;
+    margin-top: 40px;
+    cursor: pointer;
+}
+#h1_1
+{
+    text-align: center;
+    font-size: 50px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: orange;
+}
+#h1_2
+{
+    text-align: center;
+    font-size: 70px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: orange;
+}
