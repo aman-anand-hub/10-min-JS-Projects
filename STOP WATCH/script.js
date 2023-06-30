@@ -1,5 +1,7 @@
 document.getElementById("b1").addEventListener("click", function() {
     var start_time= Date.now();
+    var sec= Number(document.getElementById("h1_2").innerHTML.substring(10));
+    var min= Number(document.getElementById("h1_2").innerHTML.substring(5,7));
     intervalId = setInterval(function()
     {
         var curr_time= Date.now();
@@ -9,12 +11,14 @@ document.getElementById("b1").addEventListener("click", function() {
         var m = Math.floor((elapsed_time % 3600000) / 60000);
         var s = Math.floor((elapsed_time % 60000) / 1000);
         
+        s+=sec;
+        m+=min;
+
         if (h < 10) h = '0' + h;
         if (m < 10) m = '0' + m;
         if (s < 10) s = '0' + s;
  
-        var time_string= h + " : " + m + " : " + s;
-        document.getElementsByTagName("h1")[1].textContent= time_string;
+        document.getElementsByTagName("h1")[1].textContent= h + " : " + m + " : " + s;
     }, 1000);
 });
 
