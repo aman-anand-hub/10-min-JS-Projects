@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <h1>Enter your details to get started!</h1>
+
+        <p>Firstname:</p>
+        <input type="text">
+
+        <p>Lastname:</p>
+        <input type="text">
+
+        <p>Email:</p>
+        <input type="email">
+
+        <p>Password:</p>
+        <input type="password" id="pass" onkeyup="RepoPass(this)">
+        <button onclick="showpass1()" id="sp">*)</button>
+        <p id="p1"></p>
+        <br>
+
+        <p>Re-enter Password:</p>
+        <input type="password" id="repass" onkeyup="ValidatePass(this)">
+        <button onclick="showpass2()" id="sp1">*)</button>
+        <p id="p2"></p>
+        <br>
+
+        <input type="checkbox">
+        <label for="myCheckbox">I am not a robot</label>
+        <br>
+
+        <button>Create Account!</button>
+    </div>
+</body>
+<script>
+    function showpass1() {
+        var x = document.getElementById("pass");
+        if(x.getAttribute("type") == "password")
+        {
+            x.setAttribute("type", "text");
+        }
+        else if(x.getAttribute("type") == "text")
+        {
+            x.setAttribute("type", "password");
+        }
+    }
+    function showpass2() {
+        var x = document.getElementById("repass");
+        if(x.getAttribute("type") == "password")
+        {
+            x.setAttribute("type", "text");
+        }
+        else if(x.getAttribute("type") == "text")
+        {
+            x.setAttribute("type", "password");
+        }
+    }
+    var pass="";
+    function RepoPass(ele)
+    {
+        pass= ele.value;
+        if(pass.length>0 && pass.length<6)
+        {
+            document.getElementById("p1").innerHTML= "password must be of 6-12 digits❗";
+        }
+        else if(pass.length>12)
+        {
+            document.getElementById("p1").innerHTML= "password must be less than 12 digits❗";
+        }
+        else
+        {
+            document.getElementById("p1").innerHTML = "";
+        }
+    }
+    function ValidatePass(elem)
+    {
+        var passCheck= elem.value;
+        if(passCheck.length>0 && passCheck.length<6)
+        {
+            document.getElementById("p2").innerHTML= "password must be of 6-12 digits❗";
+        }
+        else if(passCheck.length>=6 && passCheck.length<=12)
+        {
+            if(passCheck == pass)
+            {
+                document.getElementById("p2").innerHTML= "✅"
+            }
+            else
+            {
+                document.getElementById("p2").innerHTML= "password doesnt match with above password❗"   
+            }
+        }
+        else if(passCheck.length>12)
+        {
+            document.getElementById("p2").innerHTML= "password must be less than 12 digits❗";
+        }
+        else
+        {
+            document.getElementById("p2").innerHTML = "";
+        }
+    }
+</script>
+</html>
