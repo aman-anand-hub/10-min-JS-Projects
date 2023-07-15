@@ -4,39 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign-Up</title>
+    <link rel="stylesheet" href="signup.css">
+    <link rel="stylesheet" href="index_style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-
 </head>
 <body>
-    <div>
-        <h1>Enter your details to get started!</h1>
+    <div class="backgroundIMG">
+        <div class="box1">
+        <h1 class="con">Enter your details to get started!</h1>
 
-        <p>First Name:</p>
-        <input type="text">
+        <p class="con1">First Name:</p>
+        <input type="text" id="fn">
 
-        <p>Last Name:</p>
-        <input type="text">
+        <p class="con1">Last Name:</p>
+        <input type="text" id="ln">
 
-        <p>Email:</p>
-        <input type="email">
+        <p class="con1">Email:</p>
+        <input type="email" id="mail">
 
-        <p>Password:</p>
+        <p class="con1">Password:</p>
         <input type="password" id="pass" onkeyup="RepoPass(this)">
-        <button onclick="showpass1()" id="sp">*)</button>
+        <button onclick="showpass1()" id="sp">
+            <img src="showpassIMG.png" class="showpasswordbtnIMG">        
+        </button>
         <p id="p1"></p>
-        <br>
 
-        <p>Re-enter Password:</p>
+        <p class="con1">Re-enter Password:</p>
         <input type="password" id="repass" onkeyup="ValidatePass(this)">
-        <button onclick="showpass2()" id="sp1">*)</button>
+        <button onclick="showpass2()" id="sp1">
+            <img src="showpassIMG.png" class="showpasswordbtnIMG">
+        </button>
         <p id="p2"></p>
         <br>
 
-        <input type="checkbox">
-        <label for="myCheckbox">I am not a robot</label>
-        <br>
-
-        <button>Create Account!</button>
+        <button onclick="checkAllFeilds()" id="loginbtnid" class="btn btn-primary">Create Account!</button>
+    </div>
     </div>
 </body>
 <script>
@@ -68,12 +70,12 @@
         pass= ele.value;
         if(pass.length>0 && pass.length<6)
         {
-            document.getElementById("p1").innerHTML= "password must be of 6-12 digits❗";
+            document.getElementById("p1").innerHTML= "password must be of 6-12 digits";
             document.getElementById("p1").style.fontFamily = "Arial, sans-serif";
         }
         else if(pass.length>12)
         {
-            document.getElementById("p1").innerHTML= "password must be less than 12 digits❗";
+            document.getElementById("p1").innerHTML= "password must be less than 12 digits";
             document.getElementById("p1").style.fontFamily = "Arial, sans-serif";
         }
         else
@@ -87,7 +89,7 @@
         var passCheck= elem.value;
         if(passCheck.length>0 && passCheck.length<6)
         {
-            document.getElementById("p2").innerHTML= "password must be of 6-12 digits❗";
+            document.getElementById("p2").innerHTML= "password must be of 6-12 digits";
             document.getElementById("p2").style.fontFamily = "Arial, sans-serif";
         }
         else if(passCheck.length>=6 && passCheck.length<=12)
@@ -98,17 +100,44 @@
             }
             else
             {
-                document.getElementById("p2").innerHTML= "password doesnt match with above password❗"   
+                document.getElementById("p2").innerHTML= "password doesnt match with above password"   
             }
         }
         else if(passCheck.length>12)
         {
-            document.getElementById("p2").innerHTML= "password must be less than 12 digits❗";
+            document.getElementById("p2").innerHTML= "password must be less than 12 digits";
             document.getElementById("p2").style.fontFamily = "Arial, sans-serif";
         }
         else
         {
             document.getElementById("p2").innerHTML = "";
+        }
+    }
+    function checkAllFeilds()
+    {
+        const firstname= document.getElementById("fn");
+        const lastname= document.getElementById("ln");
+        const email= document.getElementById("mail");
+        const password= document.getElementById("pass");
+        const reenterpassword= document.getElementById("repass");
+        if(firstname.value.length>0 && lastname.value.length>0 && email.value.length>0 && password.value.length>0 && reenterpassword.value.length>0)
+        {
+            if(password.value.length<6 || password.value.length>12)
+            {
+                alert("Password must be between 6 to 12 digits");
+            }
+            else if(password.value != reenterpassword.value)
+            {
+                alert("Re-entered password does not match with the entered password");
+            }
+            else
+            {
+                window.location.href="account_created.html";
+            }
+        }
+        else
+        {
+            alert("Make sure you have filled all the feilds and try again");
         }
     }
 </script>
