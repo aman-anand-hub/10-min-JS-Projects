@@ -1,0 +1,9 @@
+body{
+    background-color: rgb(68, 68, 208);
+}
+.same-line{
+    display: flex;
+    flex-direction: row;
+    vertical-align: center;
+    
+}
